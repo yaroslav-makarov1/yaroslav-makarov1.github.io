@@ -16,7 +16,6 @@ jobs:
           cache: "pnpm" 
       - run: pnpm install 
       - run: pnpm run build
-      - run: pnpm run export
       - uses: actions/upload-pages-artifact@v3
         with:
           path: ./out
