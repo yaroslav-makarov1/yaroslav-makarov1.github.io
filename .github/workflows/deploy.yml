@@ -1,7 +1,7 @@
 name: Deploy Next.js to Pages
 on:
   push:
-    branches: ["main"] # Change if your branch is different
+    branches: ["master"]
 jobs:
   build:
     runs-on: ubuntu-latest
