@@ -377,7 +377,7 @@ function ResultState({ glitch, onReset }: { glitch: boolean; onReset: () => void
       <div className={`max-w-md mx-auto mb-8 rounded-xl border border-cyber-glow/30 bg-card/80 backdrop-blur p-6 transition-all duration-500 delay-300 ${showDetails ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
         <h3 className="text-lg font-semibold text-foreground mb-2">Вердикт системы:</h3>
         <p className="text-muted-foreground">
-          Ситуация стабильно безнадёжная. Рекомендуется начать готовиться к перес��ачам. 
+          Ситуация стабильно безнадёжная. Рекомендуется начать готовиться к пересдачам. 
           Или к новой профессии. Возможно, пляжный волейбол?
         </p>
       </div>
