@@ -1,6 +1,7 @@
 "use client"
 
 import { Header } from "@/components/header"
+import { Footer } from "@/components/footer"
 import { useState } from "react"
 
 const formFields = [
@@ -192,14 +193,7 @@ export default function MeetingPage() {
           </form>
         </section>
 
-        {/* Footer */}
-        <footer className="border-t border-border">
-          <div className="mx-auto max-w-6xl px-6 py-8">
-            <p className="text-center text-sm text-muted-foreground">
-              2026 Yaroslav. Сделано с любовью и отчаянием.
-            </p>
-          </div>
-        </footer>
+        <Footer />
       </main>
     </>
   )

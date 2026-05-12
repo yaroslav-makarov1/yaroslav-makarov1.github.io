@@ -1,7 +1,8 @@
 "use client"
 
 import { Header } from "@/components/header"
-import { useState, useEffect, useRef } from "react"
+import { Footer } from "@/components/footer"
+import { useState, useEffect } from "react"
 
 const loadingMessages = [
   "Инициализация квантового анализатора...",
@@ -130,14 +131,9 @@ export default function CalculatorPage() {
           {stage === "result" && <ResultState glitch={glitchText} onReset={() => setStage("idle")} />}
         </section>
 
-        {/* Footer */}
-        <footer className="border-t border-border relative">
-          <div className="mx-auto max-w-6xl px-6 py-8">
-            <p className="text-center text-sm text-muted-foreground">
-              2026 Yaroslav. Сделано с любовью и отчаянием.
-            </p>
-          </div>
-        </footer>
+        <div className="relative">
+          <Footer />
+        </div>
       </main>
     </>
   )
@@ -381,7 +377,7 @@ function ResultState({ glitch, onReset }: { glitch: boolean; onReset: () => void
       <div className={`max-w-md mx-auto mb-8 rounded-xl border border-cyber-glow/30 bg-card/80 backdrop-blur p-6 transition-all duration-500 delay-300 ${showDetails ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
         <h3 className="text-lg font-semibold text-foreground mb-2">Вердикт системы:</h3>
         <p className="text-muted-foreground">
-          Ситуация стабильно безнадёжная. Рекомендуется начать готовиться к пересдачам. 
+          Ситуация стабильно безнадёжная. Рекомендуется начать готовиться к перес��ачам. 
           Или к новой профессии. Возможно, пляжный волейбол?
         </p>
       </div>

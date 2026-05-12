@@ -1,5 +1,17 @@
 import { Header } from "@/components/header"
+import { Footer } from "@/components/footer"
 import Link from "next/link"
+import Image from "next/image"
+
+const teamMembers = [
+  { name: "Ярослав Макаров", role: "Молодец", image: "/images/yaroslav.jpg" },
+  { name: "Руслан Сафиуллин", role: "Координатор", image: "/images/team/ruslan.jpg" },
+  { name: "Александр Киселев", role: "Докладчик", image: "/images/team/alexander.jpg" },
+  { name: "Артем Сироткин", role: "Дизайн", image: "/images/team/artem.jpg" },
+  { name: "Иван Золотов", role: "Кодер", image: "/images/team/ivan.jpg" },
+  { name: "Коршняк Кирилл", role: "Вайбкодер", image: "/images/team/kirill.jpg" },
+  { name: "ChatGPT", role: "", image: null },
+]
 
 export default function HomePage() {
   return (
@@ -35,20 +47,17 @@ export default function HomePage() {
               </div>
             </div>
 
-            {/* Photo Placeholder */}
+            {/* Photo */}
             <div className="relative mx-auto w-full max-w-sm">
               <div className="aspect-square overflow-hidden rounded-2xl bg-gradient-to-br from-secondary to-card border border-border">
-                <div className="flex h-full w-full items-center justify-center">
-                  <div className="text-center p-8">
-                    <div className="mx-auto mb-4 h-32 w-32 rounded-full bg-muted flex items-center justify-center">
-                      <svg className="h-16 w-16 text-muted-foreground" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-                      </svg>
-                    </div>
-                    <p className="text-sm text-muted-foreground">Фото Ярослава</p>
-                    <p className="text-xs text-muted-foreground/60 mt-1">(когда-нибудь будет)</p>
-                  </div>
-                </div>
+                <Image
+                  src="/images/yaroslav.jpg"
+                  alt="Ярослав Макаров"
+                  width={400}
+                  height={400}
+                  className="h-full w-full object-cover"
+                  priority
+                />
               </div>
               {/* Decorative element */}
               <div className="absolute -bottom-4 -right-4 -z-10 h-full w-full rounded-2xl border border-accent/20" />
@@ -62,7 +71,7 @@ export default function HomePage() {
             <div className="grid grid-cols-2 gap-8 md:grid-cols-4">
               <StatCard label="Курс" value="1" sublabel="второй семестр" />
               <StatCard label="Пропущенных пар" value="999+" sublabel="и это не предел" />
-              <StatCard label="Сданных сессий" value="1" sublabel="пока что" />
+              <StatCard label="Сданных сессий" value="0.5" sublabel="есть долги" />
               <StatCard label="Шанс отчисления" value="99%" sublabel="стабильно" />
             </div>
           </div>
@@ -106,30 +115,17 @@ export default function HomePage() {
           <div className="mx-auto max-w-6xl px-6 py-16">
             <h2 className="mb-8 text-2xl font-semibold tracking-tight text-center">Благодарности</h2>
             <p className="text-center text-muted-foreground mb-8 max-w-2xl mx-auto">
-              Этот сайт не появился бы без поддержки замечательных людей. 
-              Спасибо всем членам группы за вдохновение и помощь.
+              Этот сайт - коллективное творение всех людей ниже. Спасибо всем членам группы за их бесценный вклад.
             </p>
             <div className="grid gap-4 md:grid-cols-3 lg:grid-cols-4">
-              <CreditCard name="Имя 1" role="Роль в проекте" />
-              <CreditCard name="Имя 2" role="Роль в проекте" />
-              <CreditCard name="Имя 3" role="Роль в проекте" />
-              <CreditCard name="Имя 4" role="Роль в проекте" />
-              <CreditCard name="Имя 5" role="Роль в проекте" />
-              <CreditCard name="Имя 6" role="Роль в проекте" />
-              <CreditCard name="Имя 7" role="Роль в проекте" />
-              <CreditCard name="Имя 8" role="Роль в проекте" />
+              {teamMembers.map((member, index) => (
+                <CreditCard key={index} name={member.name} role={member.role} image={member.image} />
+              ))}
             </div>
           </div>
         </section>
 
-        {/* Footer */}
-        <footer className="border-t border-border">
-          <div className="mx-auto max-w-6xl px-6 py-8">
-            <p className="text-center text-sm text-muted-foreground">
-              2026 Yaroslav. Сделано с любовью и отчаянием.
-            </p>
-          </div>
-        </footer>
+        <Footer />
       </main>
     </>
   )
@@ -177,16 +173,26 @@ function SectionCard({
   )
 }
 
-function CreditCard({ name, role }: { name: string; role: string }) {
+function CreditCard({ name, role, image }: { name: string; role: string; image: string | null }) {
   return (
     <div className="rounded-lg border border-border bg-card p-4 text-center">
-      <div className="mx-auto mb-3 h-12 w-12 rounded-full bg-secondary flex items-center justify-center">
-        <svg className="h-6 w-6 text-muted-foreground" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-        </svg>
+      <div className="mx-auto mb-3 h-12 w-12 rounded-full bg-secondary flex items-center justify-center overflow-hidden">
+        {image ? (
+          <Image
+            src={image}
+            alt={name}
+            width={48}
+            height={48}
+            className="h-full w-full object-cover"
+          />
+        ) : (
+          <svg className="h-6 w-6 text-muted-foreground" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9.75 3.104v5.714a2.25 2.25 0 01-.659 1.591L5 14.5M9.75 3.104c-.251.023-.501.05-.75.082m.75-.082a24.301 24.301 0 014.5 0m0 0v5.714c0 .597.237 1.17.659 1.591L19.8 15.3M14.25 3.104c.251.023.501.05.75.082M19.8 15.3l-1.57.393A9.065 9.065 0 0112 15a9.065 9.065 0 00-6.23.693L5 14.5m14.8.8l1.402 1.402c1.232 1.232.65 3.318-1.067 3.611A48.309 48.309 0 0112 21c-2.773 0-5.491-.235-8.135-.687-1.718-.293-2.3-2.379-1.067-3.61L5 14.5" />
+          </svg>
+        )}
       </div>
       <p className="font-medium text-foreground text-sm">{name}</p>
-      <p className="text-xs text-muted-foreground">{role}</p>
+      {role && <p className="text-xs text-muted-foreground">{role}</p>}
     </div>
   )
 }

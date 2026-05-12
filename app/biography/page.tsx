@@ -1,4 +1,5 @@
 import { Header } from "@/components/header"
+import { Footer } from "@/components/footer"
 
 const timelineEvents = [
   {
@@ -93,14 +94,7 @@ export default function BiographyPage() {
           </div>
         </section>
 
-        {/* Footer */}
-        <footer className="border-t border-border">
-          <div className="mx-auto max-w-6xl px-6 py-8">
-            <p className="text-center text-sm text-muted-foreground">
-              2026 Yaroslav. Сделано с любовью и отчаянием.
-            </p>
-          </div>
-        </footer>
+        <Footer />
       </main>
     </>
   )

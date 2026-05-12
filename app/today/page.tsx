@@ -1,4 +1,5 @@
 import { Header } from "@/components/header"
+import { Footer } from "@/components/footer"
 
 const posts = [
   {
@@ -58,8 +59,8 @@ const posts = [
 
 const stats = [
   { label: "Дней без отчисления", value: "???" },
-  { label: "Сданных сессий", value: "1" },
-  { label: "Часов сна в неделю", value: "~20" },
+  { label: "Сданных сессий", value: "0.5" },
+  { label: "Часов сна в неделю", value: "~105" },
   { label: "Рейтинг в Brawl Stars", value: "Высокий" },
 ]
 
@@ -121,14 +122,7 @@ export default function TodayPage() {
           </div>
         </section>
 
-        {/* Footer */}
-        <footer className="border-t border-border">
-          <div className="mx-auto max-w-6xl px-6 py-8">
-            <p className="text-center text-sm text-muted-foreground">
-              2026 Yaroslav. Сделано с любовью и отчаянием.
-            </p>
-          </div>
-        </footer>
+        <Footer />
       </main>
     </>
   )
