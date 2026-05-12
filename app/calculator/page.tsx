@@ -370,7 +370,7 @@ function ResultState({ glitch, onReset }: { glitch: boolean; onReset: () => void
         <StatBox label="Пропущенных пар" value="999+" status="critical" />
         <StatBox label="Долгов" value="Много" status="critical" />
         <StatBox label="Шансов на выживание" value="1%" status="warning" />
-        <StatBox label="Сданных сессий" value="1" status="warning" />
+        <StatBox label="Сданных сессий" value="0.5" status="warning" />
       </div>
 
       {/* Verdict */}
